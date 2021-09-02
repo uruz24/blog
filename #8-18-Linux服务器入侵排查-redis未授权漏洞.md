@@ -1,0 +1,90 @@
+#8-18-Linux服务器入侵排查-redis未授权漏洞
+
+ssh 链接远程服务器出现错误：
+
+原因：
+
+​		第一次ssh链接的时候会生成一个认证凭据，存储在客户端中的known_hosts，如果服务器地址重置or重新安装了，就会产生这个问		题，巴拉巴拉。。。
+
+解决：
+
+​		ssh-keygen -R 172.16.12.2
+
+​		ssh root@172.16.12.2
+
+
+
+##1.事件定性：
+
+​			redis未授权漏洞
+
+##2.时间
+
+​			2021年8月20日16:03:04
+
+##3。查看系统中是否有异常的系统用户
+
+​			1.首先检查passwd文件：
+
+​			/etc/passwd	/etc/shadow	/etc/group
+
+​			![image-20210820162819785](E:\homework\GitHub\blog\blog\#8-18-Linux服务器入侵排查-redis未授权漏洞\image-20210820162819785.png)![image-20210820162502675](C:\Users\niu\AppData\Roaming\Typora\typora-user-images\image-20210820162502675.png)![image-20210820212121904](E:\homework\GitHub\blog\blog\#8-18-Linux服务器入侵排查-redis未授权漏洞\image-20210820212121904.png)
+
+**发现mx7krshell 添加为root权限**
+
+​		![image-20210820163147229](E:\homework\GitHub\blog\blog\#8-18-Linux服务器入侵排查-redis未授权漏洞\image-20210820163147229.png)	![image-20210820163217606](E:\homework\GitHub\blog\blog\#8-18-Linux服务器入侵排查-redis未授权漏洞\image-20210820163217606.png)![image-20210820163237764](E:\homework\GitHub\blog\blog\#8-18-Linux服务器入侵排查-redis未授权漏洞\image-20210820163237764.png)
+
+并未添加到shadow文件，没有查看密码权限
+
+![image-20210820170615943](E:\homework\GitHub\blog\blog\#8-18-Linux服务器入侵排查-redis未授权漏洞\image-20210820170615943.png)
+
+并未添加到root组
+
+![image-20210820172031440](E:\homework\GitHub\blog\blog\#8-18-Linux服务器入侵排查-redis未授权漏洞\image-20210820172031440.png)
+
+#网络
+
+​	ss -antlp
+
+![image-20210820200756672](E:\homework\GitHub\blog\blog\#8-18-Linux服务器入侵排查-redis未授权漏洞\image-20210820200756672.png)
+
+#进程
+
+​	ps -aux		/top
+
+![image-20210820201831594](E:\homework\GitHub\blog\blog\#8-18-Linux服务器入侵排查-redis未授权漏洞\image-20210820201831594.png)
+
+#开机启动项
+
+​	/etc/init.d
+
+![image-20210820202912838](E:\homework\GitHub\blog\blog\#8-18-Linux服务器入侵排查-redis未授权漏洞\image-20210820202912838.png)
+
+​		并无可疑文件
+
+#last  查看最近登录用户	查看最近日志文件lastlog
+
+![image-20210820204325025](E:\homework\GitHub\blog\blog\#8-18-Linux服务器入侵排查-redis未授权漏洞\image-20210820204325025.png)
+
+![image-20210820203220632](E:\homework\GitHub\blog\blog\#8-18-Linux服务器入侵排查-redis未授权漏洞\image-20210820203220632.png)
+
+#计划任务	crontab -l
+
+​	![image-20210820203439059](E:\homework\GitHub\blog\blog\#8-18-Linux服务器入侵排查-redis未授权漏洞\image-20210820203439059.png)
+
+#查看日志	/var/log/sercure
+
+![image-20210820210209855](E:\homework\GitHub\blog\blog\#8-18-Linux服务器入侵排查-redis未授权漏洞\image-20210820210209855.png)
+
+​	查看redis的日志文件，路径为：/usr/local/redis/log/redis.log
+
+![image-20210820211901954](E:\homework\GitHub\blog\blog\#8-18-Linux服务器入侵排查-redis未授权漏洞\image-20210820211901954.png)
+
+#结论：
+
+​	攻击者通过radis未授权端口进行反弹shell，添加一个有root权限的账户，
+
+#处理方式：
+
+​	添加radis端口授权，进制添加用户为root权限
+
