@@ -4,7 +4,7 @@
 
 
 
-#21-08-27 **Cobalt Strike**用法
+# #21-08-27 Cobalt Strike用法
 
 cs可以在Ubuntu，centos，Windows2008,2012,2019，win7，win10，win11，都可以运行
 
@@ -14,11 +14,11 @@ centos安装  yum instal openjdk@13 unzip
 
 cs4.2 最好使用jdk11以上
 
-![](#21-08-27 Cobalt Strike用法\image-20210827140254423.png)
+![](cs用法\image-20210827140254423.png)
 
-![image-20210827140409050](#21-08-27 Cobalt Strike用法\image-20210827140409050.png)
+![image-20210827140409050](cs用法\image-20210827140409050.png)
 
-![image-20210827160438311](#21-08-27 Cobalt Strike用法\image-20210827160438311.png)
+![image-20210827160438311](cs用法\image-20210827160438311.png)
 
 **1，bg 会话**
 
@@ -40,19 +40,19 @@ set lhosts 192.168.21.43
 
 set lport 8080
 
-![image-20210827160524003](#21-08-27 Cobalt Strike用法\image-20210827160524003.png)
+![image-20210827160524003](cs用法\image-20210827160524003.png)
 
 **6，运行run**
 
-![image-20210827162931510](#21-08-27 Cobalt Strike用法\image-20210827162931510.png)
+![image-20210827162931510](cs用法\image-20210827162931510.png)
 
-![image-20210827163040114](#21-08-27 Cobalt Strike用法\image-20210827163040114.png)
+![image-20210827163040114](cs用法\image-20210827163040114.png)
 
-![image-20210827163212188](#21-08-27 Cobalt Strike用法\image-20210827163212188.png)
+![image-20210827163212188](cs用法\image-20210827163212188.png)
 
-![image-20210827173045062](#21-08-27 Cobalt Strike用法\image-20210827173045062.png)
+![image-20210827173045062](cs用法\image-20210827173045062.png)
 
-![image-20210827174242671](#21-08-27 Cobalt Strike用法\image-20210827174242671.png)
+![image-20210827174242671](cs用法\image-20210827174242671.png)
 
 
 
@@ -68,14 +68,14 @@ screen -S cs （随便起的名字）切换到screen 执行
 
 screen 文件中写的默认端口是1998
 
-![image-20210901190549230](#21-08-27 Cobalt Strike用法/image-20210901190549230.png) 
+![image-20210901190549230](cs用法/image-20210901190549230.png) 
 
 然后再进入cs目录启动teamserver
 
-![image-20210901190716774](#21-08-27 Cobalt Strike用法/image-20210901190716774.png)
+![image-20210901190716774](cs用法/image-20210901190716774.png)
 
-![image-20210901193355762](#21-08-27 Cobalt Strike用法/image-20210901193355762.png)
+![image-20210901193355762](cs用法/image-20210901193355762.png)
 
-![image-20210901193502662](#21-08-27 Cobalt Strike用法/image-20210901193502662.png)
+![image-20210901193502662](cs用法/image-20210901193502662.png)
 
 强制切入 screen -rd cs
