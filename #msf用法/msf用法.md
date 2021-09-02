@@ -16,13 +16,13 @@ services参数：查看扫描的端口信息
 
 
 
-db_nmap -iL  ip.txt  -A -p 0-65535   	-A详细扫描   -p  端口 （速度很慢）
+`db_nmap -iL  ip.txt  -A -p 0-65535`   	-A详细扫描   -p  端口 （速度很慢）
 
 
 
 ![image-20210826213731678](msf用法/image-20210826213731678.png)
 
-db_remove  删除数据库信息
+`db_remove`  删除数据库信息
 
 ![image-20210826213914098](msf用法/image-20210826213914098.png)
 
