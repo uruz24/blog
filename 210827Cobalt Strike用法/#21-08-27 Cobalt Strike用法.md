@@ -70,7 +70,7 @@ screen 文件中写的默认端口是1998
 
 ![image-20210901190549230](cs用法/image-20210901190549230.png) 
 
-然后再进入cs目录启动teamserver
+然后再进入cs目录启动teamserver，注意格式 ip +password  +jq
 
 ![image-20210901190716774](cs用法/image-20210901190716774.png)
 
@@ -79,3 +79,4 @@ screen 文件中写的默认端口是1998
 ![image-20210901193502662](cs用法/image-20210901193502662.png)
 
 强制切入 screen -rd cs
+

@@ -1,5 +1,43 @@
 # #21-08-25Metasploit用法
 
+![image-20210907205240860](msf用法/image-20210907205240860.png)
+
+info  
+
+help  search 
+
+show 
+
+![image-20210907210359933](msf用法/image-20210907210359933.png)
+
+使用监听器，命令：
+
+`use  exploit/multi/handler`
+
+`options`
+
+设置全局
+
+`setg lhost 192.168.21.192`
+
+`info`
+
+![image-20210907211302326](msf用法/image-20210907211302326.png)
+
+结束  `kill 0`
+
+![image-20210907213250081](msf用法/image-20210907213250081.png)
+
+
+
+
+
+
+
+
+
+
+
 msf_db init	初始化
 
 msfconsole
